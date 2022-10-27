@@ -1,0 +1,21 @@
+
+<h1>Table</h1>
+<hr>
+
+<table>
+    <tr>
+        <th *ngFor="let column of headers">
+            {{column}}
+        </th>
+    </tr>
+
+    <tr *ngFor="let row of rows; let i =index">
+        <td *ngFor="let column of headers" (dblclick)="showEdit(i,column)">
+            <div class="{{ 'wave' + i }}" style="display:none ;" #viewbar>
+                <input type="text" placeholder="enter new value" #newdata>
+                <button (click)="Edit(newdata.value,row.ID,column);hideEdit(i)"  ng-model="data">SAVE</button>
+            </div>
+            {{row[column]}}
+        </td>
+    </tr>
+</table>
